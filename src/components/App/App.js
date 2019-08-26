@@ -9,6 +9,11 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
+import Trips from '../Trips/Trips'
+import Trip from '../Trips/Trip'
+import CreateTrip from '../Trips/CreateTrip'
+import UpdateTrip from '../Trips/UpdateTrip'
+
 class App extends Component {
   constructor () {
     super()
@@ -53,6 +58,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips' render={() => (
+            <Trips user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips/:id' render={() => (
+            <Trip user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/createtrip' render={() => (
+            <CreateTrip user={user} alert={this.alert}/>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips/:id/edit' render={() => (
+            <UpdateTrip user={user} alert={this.alert}/>
           )} />
         </main>
       </Fragment>
