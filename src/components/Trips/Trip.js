@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import Activities from '../Activities/Activities'
 
 import Button from 'react-bootstrap/Button'
 
@@ -40,6 +41,7 @@ class Trip extends Component {
 
   render () {
     const { trip } = this.state
+    const parent = this.state.trip
 
     return (
       <div>
@@ -52,6 +54,7 @@ class Trip extends Component {
               : ''
             }
             <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
+            <Activities user={this.props.user} parentTrip={parent}/>
           </Fragment>
         )}
       </div>
