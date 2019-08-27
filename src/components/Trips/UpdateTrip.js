@@ -7,14 +7,19 @@ import TripForm from './TripForm'
 
 class UpdateTrip extends Component {
   state = {
-    book: null
+    trip: null
   }
 
   componentDidMount () {
-    axios(`${apiUrl}/trips/${this.props.match.params.id}`)
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/trips/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
       .then(response => {
         this.setState({ trip: response.data.trip })
-        console.log(response.data.trip)
       })
       .catch(() => this.props.alert({
         heading: 'Error',

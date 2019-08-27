@@ -5,6 +5,7 @@ import apiUrl from '../../apiConfig'
 
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner'
+import Button from 'react-bootstrap/Button'
 
 class Trips extends Component {
   constructor () {
@@ -33,10 +34,24 @@ class Trips extends Component {
     }
   }
 
+  deleteTrip = (trip) => {
+    axios({
+      method: 'DELETE',
+      url: `${apiUrl}/trips/${trip.id}`,
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
+  }
+
   render () {
     const tripsJsx = this.state.trips.map(trip => (
       <ListGroup.Item key={trip.id}>
-        <Link to={`/trips/${trip.id}`}>{trip.country}</Link>
+        <Link to={`/trips/${trip.id}`}>{trip.city}, {trip.country}</Link>
+        <Link to={`/trips/${trip.id}/edit`}>
+          <Button size="sm">Edit Trip</Button>
+        </Link>
+        <Button onClick={this.deleteTrip.bind(this, trip)} variant="danger" size="sm">Delete Trip</Button>
       </ListGroup.Item>
     ))
 
