@@ -56,7 +56,7 @@ class CreateActivity extends Component {
           message: 'You added an activity.',
           variant: 'success'
         })
-        this.props.history.push(`/trips/${response.data.trip_id}`)
+        this.props.history.push(`/trips/${this.props.match.params.id}`)
       })
       .catch(console.error)
   }
