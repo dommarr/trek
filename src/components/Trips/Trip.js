@@ -11,7 +11,6 @@ class Trip extends Component {
   }
 
   async componentDidMount () {
-    console.log(this.props.user)
     try {
       const response = await axios({
         method: 'GET',
@@ -28,6 +27,17 @@ class Trip extends Component {
     }
   }
 
+  // { trip && (
+  //   <Fragment>
+  //     <h1>{trip.country}</h1>
+  //     <h2>{trip.city}</h2>
+  //     {(this.props.user && trip) && this.props.user.id === trip.user_id
+  //       ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
+  //       : ''
+  //     }
+  //   </Fragment>
+  // )}
+
   render () {
     const { trip } = this.state
 
@@ -41,6 +51,7 @@ class Trip extends Component {
               ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
               : ''
             }
+            <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
           </Fragment>
         )}
       </div>
