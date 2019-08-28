@@ -36,14 +36,17 @@ class Trip extends Component {
       <div>
         { trip && (
           <Fragment>
-            <h1>{trip.country}</h1>
-            <h2>{trip.city}</h2>
+            <h1 className="text-light mt-3">{trip.city}</h1>
+            <h2 className="text-light">{trip.country}</h2>
+            <hr/>
+            <h4 className="text-light">Your Itinerary</h4>
             {(this.props.user && trip) && this.props.user.id === trip.user_id
-              ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
+              ? <Button href={`#trips/${trip.id}/edit`}>Edit trip</Button>
               : ''
             }
             <Activities user={this.props.user} parentTrip={parent}/>
-            <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
+            <Button className="mt-3 mr-2" href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user} parentTrip={parent}>Add activity</Button>
+            <Button className="mt-3" href={'#trips/'} size="sm" user={this.props.user}>Back to all trips</Button>
           </Fragment>
         )}
       </div>

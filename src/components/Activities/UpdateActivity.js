@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import Button from 'react-bootstrap/Button'
 
 import ActivityForm from './ActivityForm'
 
@@ -67,11 +68,14 @@ class UpdateActivity extends Component {
       )
     }
     return (
-      <ActivityForm
-        activity={this.state.activity}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <Fragment>
+        <ActivityForm
+          activity={this.state.activity}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        <Button href={`#trips/${this.state.activity.trip_id}`} size="sm">Back to trip</Button>
+      </Fragment>
     )
   }
 }
