@@ -3,20 +3,21 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-import TripForm from './TripForm'
+import ActivityForm from './ActivityForm'
 
-class CreateTrip extends Component {
+class CreateActivity extends Component {
   state = {
-    trip: {
-      country: '',
-      city: ''
+    activity: {
+      begin_date: '',
+      end_date: '',
+      activity_title: ''
     }
   }
 
   handleChange = event => {
     this.setState({
-      trip: {
-        ...this.state.trip,
+      activity: {
+        ...this.state.activity,
         [event.target.name]: event.target.value
       }
     })
@@ -26,29 +27,35 @@ class CreateTrip extends Component {
     event.preventDefault()
     axios({
       method: 'POST',
-      url: `${apiUrl}/trips`,
+      url: `${apiUrl}/activities`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       },
       data: {
-        trip: this.state.trip
+        activity: {
+          'begin_date': this.state.activity.begin_date,
+          'end_date': this.state.activity.end_date,
+          'activity_title': this.state.activity.activity_title,
+          'trip_id': parseInt(this.props.match.params.id),
+          'user_id': this.props.user.id
+        }
       }
     })
       .then(response => {
         this.props.alert({
           heading: 'Success!',
-          message: 'You created a trip.',
+          message: 'You added an activity.',
           variant: 'success'
         })
-        this.props.history.push(`/trips/${response.data.trip.id}`)
+        this.props.history.push(`/trips/${this.props.match.params.id}`)
       })
       .catch(console.error)
   }
 
   render () {
     return (
-      <TripForm
-        trip={this.state.trip}
+      <ActivityForm
+        activity={this.state.activity}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
@@ -56,4 +63,4 @@ class CreateTrip extends Component {
   }
 }
 
-export default withRouter(CreateTrip)
+export default withRouter(CreateActivity)

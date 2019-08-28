@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import Activities from '../Activities/Activities'
 
 import Button from 'react-bootstrap/Button'
 
@@ -11,7 +12,6 @@ class Trip extends Component {
   }
 
   async componentDidMount () {
-    console.log(this.props.user)
     try {
       const response = await axios({
         method: 'GET',
@@ -30,6 +30,7 @@ class Trip extends Component {
 
   render () {
     const { trip } = this.state
+    const parent = this.state.trip
 
     return (
       <div>
@@ -41,6 +42,8 @@ class Trip extends Component {
               ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
               : ''
             }
+            <Activities user={this.props.user} parentTrip={parent}/>
+            <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
           </Fragment>
         )}
       </div>

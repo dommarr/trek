@@ -13,6 +13,8 @@ import Trips from '../Trips/Trips'
 import Trip from '../Trips/Trip'
 import CreateTrip from '../Trips/CreateTrip'
 import UpdateTrip from '../Trips/UpdateTrip'
+import CreateActivity from '../Activities/CreateActivity'
+import UpdateActivity from '../Activities/UpdateActivity'
 
 class App extends Component {
   constructor () {
@@ -63,13 +65,19 @@ class App extends Component {
             <Trips user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/trips/:id' render={() => (
-            <Trip user={user} />
+            <Trip user={user} alert={this.alert}/>
           )} />
           <AuthenticatedRoute user={user} path='/createtrip' render={() => (
             <CreateTrip user={user} alert={this.alert}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/trips/:id/edit' render={() => (
             <UpdateTrip user={user} alert={this.alert}/>
+          )} />
+          <AuthenticatedRoute user={user} path='/trips/:id/addactivity' render={() => (
+            <CreateActivity user={user} alert={this.alert}/>
+          )} />
+          <AuthenticatedRoute user={user} path='/activities/:id/edit' render={() => (
+            <UpdateActivity user={user} alert={this.alert}/>
           )} />
         </main>
       </Fragment>

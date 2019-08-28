@@ -3,23 +3,23 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-import TripForm from './TripForm'
+import ActivityForm from './ActivityForm'
 
-class UpdateTrip extends Component {
+class UpdateActivity extends Component {
   state = {
-    trip: null
+    activity: null
   }
 
   componentDidMount () {
     axios({
       method: 'GET',
-      url: `${apiUrl}/trips/${this.props.match.params.id}`,
+      url: `${apiUrl}/activities/${this.props.match.params.id}`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       }
     })
       .then(response => {
-        this.setState({ trip: response.data.trip })
+        this.setState({ activity: response.data.activity })
       })
       .catch(() => this.props.alert({
         heading: 'Error',
@@ -30,8 +30,8 @@ class UpdateTrip extends Component {
 
   handleChange = event => {
     this.setState({
-      trip: {
-        ...this.state.trip,
+      activity: {
+        ...this.state.activity,
         [event.target.name]: event.target.value
       }
     })
@@ -41,34 +41,34 @@ class UpdateTrip extends Component {
     event.preventDefault()
     axios({
       method: 'PATCH',
-      url: `${apiUrl}/trips/${this.state.trip.id}`,
+      url: `${apiUrl}/activities/${this.state.activity.id}`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       },
       data: {
-        trip: this.state.trip
+        activity: this.state.activity
       }
     })
       .then(response => {
         this.props.alert({
           heading: 'Success!',
-          message: 'You updated a trip.',
+          message: 'You updated an activity.',
           variant: 'success'
         })
-        this.props.history.push(`/trips/${this.state.trip.id}`)
+        this.props.history.push(`/trips/${response.data.activity.trip_id}`)
       })
       .catch(console.error)
   }
 
   render () {
-    if (!this.state.trip) {
+    if (!this.state.activity) {
       return (
         <h1>Loading... </h1>
       )
     }
     return (
-      <TripForm
-        trip={this.state.trip}
+      <ActivityForm
+        activity={this.state.activity}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
@@ -76,4 +76,4 @@ class UpdateTrip extends Component {
   }
 }
 
-export default withRouter(UpdateTrip)
+export default withRouter(UpdateActivity)

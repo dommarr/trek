@@ -7,7 +7,7 @@ Users can add trips and build out an itinerary.
 ### Links
 - [Application](https://dommarr.github.io/trek/)
 - [Back end](https://trek-trips.herokuapp.com/)
-- [Front end repo]()
+- [Front end repo](https://github.com/dommarr/trek)
 - [Back end repo](https://github.com/dommarr/trek-back-end)
 
 ### Development
@@ -21,15 +21,13 @@ Users can add trips and build out an itinerary.
   3. Create and update database.
 3. Build out front end.
   1. Decided to use JS, React.
-  2.
-2. Develop front end, working through each CRUD action.
-  1. Edit backend as needed (CRUD authentication, etc.)
-3. Once the above is complete, shift to general (non-api) front end functionality.
-4. Then focus on styling.
+  2. Work through CRUD on the first resource (trips).
+  3. Work through CRUD on the second resource (activities).
+4. Once the above is complete, shift to general (non-api) front end functionality.
+5. Then focus on styling.
 
 ### Technologies
 - HTML
-- CSS
 - Bootstrap
 - Javascript
 - React
@@ -57,26 +55,30 @@ The application will have a simple one to many relationship between two tables: 
 ```md
 Table: Users
 - email: string
-- first_name: string
 - id: index
 
 Table: Trips
-- habit_title: string
-- streak: integer
-- habit_id: index
+- country: string
+- city: string
+- id: index
+
+Table: Activities
+- begin_date: datetime
+- end_date: datetime
+- activity: string
+- trip_id: index
+- id: index
 ```
 
 ### ERD
 
-![ERD](https://i.imgur.com/RvXkEy2.png "ERD")
+![ERD](https://i.imgur.com/uoK6TmK.png "ERD")
 
 ### Wireframes
 
-![Sign Up](https://i.imgur.com/FegJYap.png "Sign Up")
-![Sign In](https://i.imgur.com/O9R31eF.png "Sign In")
-![Home](https://i.imgur.com/jDAHgFK.png "Home")
-![Menu](https://i.imgur.com/jrrMM65.png "Menu")
-![Create Habit](https://i.imgur.com/ad5Ql8s.png "Create Habit")
+![Sign Up / Sign In](https://i.imgur.com/0OVFjxE.png "Sign Up / Sign In")
+![Trips](https://i.imgur.com/2mUPppF.png "Trips")
+![Activities](https://i.imgur.com/4O5KSKp.png "Activities")
 
 ### Unsolved Issues / Future Features
 - Improve styling.
