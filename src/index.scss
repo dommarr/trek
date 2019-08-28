@@ -1,1 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
+
+$primary: #007bff;
+$secondary: #6c757d;
+$dark: #343a40;
+$light: #f8f9fa;
+$success: #28a745;
+
+body {
+  background-color: $dark;
+}
+
+hr {
+  background-color: $light;
+}

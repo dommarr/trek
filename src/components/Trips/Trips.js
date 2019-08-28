@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -6,6 +6,7 @@ import apiUrl from '../../apiConfig'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
 
 class Trips extends Component {
   constructor () {
@@ -59,9 +60,9 @@ class Trips extends Component {
       <ListGroup.Item key={trip.id}>
         <Link to={`/trips/${trip.id}`}>{trip.city ? `${trip.city},` : ''} {trip.country}</Link>
         <Link to={`/trips/${trip.id}/edit`}>
-          <Button size="sm">Edit Trip</Button>
+          <Button size="sm" className="mr-2">Edit</Button>
         </Link>
-        <Button onClick={this.deleteTrip.bind(this, trip)} variant="danger" size="sm">Delete Trip</Button>
+        <Button onClick={this.deleteTrip.bind(this, trip)} variant="danger" size="sm">Delete</Button>
       </ListGroup.Item>
     ))
 
@@ -74,12 +75,16 @@ class Trips extends Component {
     }
 
     return (
-      <ListGroup>
-        {this.state.trips.length
-          ? tripsJsx
-          : <ListGroup.Item>No trips found</ListGroup.Item>
-        }
-      </ListGroup>
+      <Fragment>
+        <Image className="mt-3 mb-3" src="https://i.imgur.com/9KyrdjV.jpg" fluid />
+        <h3 className="text-light">Your Trips</h3>
+        <ListGroup>
+          {this.state.trips.length
+            ? tripsJsx
+            : <ListGroup.Item>No trips found</ListGroup.Item>
+          }
+        </ListGroup>
+      </Fragment>
     )
   }
 }
