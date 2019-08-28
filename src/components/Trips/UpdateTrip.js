@@ -29,12 +29,6 @@ class UpdateTrip extends Component {
   }
 
   handleChange = event => {
-    // const updatedField = {
-    //   [event.target.name]: event.target.value
-    // }
-    // const editedBook = Object.assign(this.state.book, updatedField)
-    // this.setState({ book: editedBook })
-
     this.setState({
       trip: {
         ...this.state.trip,

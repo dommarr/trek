@@ -28,17 +28,6 @@ class Trip extends Component {
     }
   }
 
-  // { trip && (
-  //   <Fragment>
-  //     <h1>{trip.country}</h1>
-  //     <h2>{trip.city}</h2>
-  //     {(this.props.user && trip) && this.props.user.id === trip.user_id
-  //       ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
-  //       : ''
-  //     }
-  //   </Fragment>
-  // )}
-
   render () {
     const { trip } = this.state
     const parent = this.state.trip
@@ -53,8 +42,8 @@ class Trip extends Component {
               ? <Button href={`#trips/${trip.id}/edit`}>Edit Trip</Button>
               : ''
             }
-            <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
             <Activities user={this.props.user} parentTrip={parent}/>
+            <Button href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user}>Add Activity</Button>
           </Fragment>
         )}
       </div>

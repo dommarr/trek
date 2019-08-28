@@ -5,13 +5,27 @@ import apiUrl from '../../apiConfig'
 
 import ActivityForm from './ActivityForm'
 
-class CreateActivity extends Component {
+class UpdateActivity extends Component {
   state = {
-    activity: {
-      begin_date: '',
-      end_date: '',
-      activity_title: ''
-    }
+    activity: null
+  }
+
+  componentDidMount () {
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/activities/${this.props.match.params.id}`,
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
+      .then(response => {
+        this.setState({ activity: response.data.activity })
+      })
+      .catch(() => this.props.alert({
+        heading: 'Error',
+        message: 'Something went wrong',
+        variant: 'danger'
+      }))
   }
 
   handleChange = event => {
@@ -26,33 +40,32 @@ class CreateActivity extends Component {
   handleSubmit = event => {
     event.preventDefault()
     axios({
-      method: 'POST',
-      url: `${apiUrl}/activities`,
+      method: 'PATCH',
+      url: `${apiUrl}/activities/${this.state.activity.id}`,
       headers: {
         'Authorization': `Bearer ${this.props.user.token}`
       },
       data: {
-        activity: {
-          'begin_date': this.state.activity.begin_date,
-          'end_date': this.state.activity.end_date,
-          'activity_title': this.state.activity.activity_title,
-          'trip_id': parseInt(this.props.match.params.id),
-          'user_id': this.props.user.id
-        }
+        activity: this.state.activity
       }
     })
       .then(response => {
         this.props.alert({
           heading: 'Success!',
-          message: 'You added an activity.',
+          message: 'You updated an activity.',
           variant: 'success'
         })
-        this.props.history.push(`/trips/${this.props.match.params.id}`)
+        this.props.history.push(`/trips/${response.data.activity.trip_id}`)
       })
       .catch(console.error)
   }
 
   render () {
+    if (!this.state.activity) {
+      return (
+        <h1>Loading... </h1>
+      )
+    }
     return (
       <ActivityForm
         activity={this.state.activity}
@@ -63,4 +76,4 @@ class CreateActivity extends Component {
   }
 }
 
-export default withRouter(CreateActivity)
+export default withRouter(UpdateActivity)
