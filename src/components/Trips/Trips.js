@@ -19,7 +19,6 @@ class Trips extends Component {
 
   async componentDidMount () {
     try {
-      // await the response from API call
       const response = await axios({
         method: 'GET',
         url: `${apiUrl}/trips`,
@@ -27,7 +26,6 @@ class Trips extends Component {
           'Authorization': `Bearer ${this.props.user.token}`
         }
       })
-      // do something with response
       this.setState({ trips: response.data.trips, isLoading: false })
     } catch (error) {
       console.error(error)
@@ -36,7 +34,6 @@ class Trips extends Component {
 
   async deleteTrip (trip) {
     try {
-      // await the response from API call
       await axios({
         method: 'DELETE',
         url: `${apiUrl}/trips/${trip.id}`,
@@ -51,7 +48,6 @@ class Trips extends Component {
           'Authorization': `Bearer ${this.props.user.token}`
         }
       })
-      // do something with response
       this.setState({ trips: response.data.trips, isLoading: false })
     } catch (error) {
       console.error(error)
@@ -59,8 +55,6 @@ class Trips extends Component {
   }
 
   render () {
-    // const city = (this.state.trips.city) ? `${this.state.trips.city},` : ''
-    console.log(this.state.trips.city)
     const tripsJsx = this.state.trips.map(trip => (
       <ListGroup.Item key={trip.id}>
         <Link to={`/trips/${trip.id}`}>{trip.city ? `${trip.city},` : ''} {trip.country}</Link>

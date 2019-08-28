@@ -1,30 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { Link } from 'react-router-dom'
 
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
 
 class Activities extends Component {
-  // constructor (props) {
-  //   super(props)
-  //
-  //   this.
     state = {
       activities: [],
       isLoading: true
     }
-    // }
-
-    // console.log(response)
-    // console.log(this.props.match.params.id)
-    // // do something with response
-    // const match = response.data.filter(activity => activity.trip_id === this.props.match.params.id)
 
     async componentDidMount () {
       try {
-        // await the response from API call
         const response = await axios({
           method: 'GET',
           url: `${apiUrl}/activities`,
@@ -33,9 +23,7 @@ class Activities extends Component {
           }
         })
         const match = response.data.activities.filter(activity => activity.trip_id === this.props.parentTrip.id)
-        console.log(response.data.activities.trip_id)
-        console.log(match)
-        this.setState({ activities: response.data.activities, isLoading: false })
+        this.setState({ activities: match, isLoading: false })
       } catch (error) {
         console.error(error)
       }
@@ -43,23 +31,22 @@ class Activities extends Component {
 
     async deleteActivity (activity) {
       try {
-        // await the response from API call
         await axios({
           method: 'DELETE',
-          url: `${apiUrl}/trips/${this.props.match.params.id}/activities/${activity.id}`,
+          url: `${apiUrl}/activities/${activity.id}`,
           headers: {
             'Authorization': `Bearer ${this.props.user.token}`
           }
         })
         const response = await axios({
           method: 'GET',
-          url: `${apiUrl}/trips/${this.props.match.params.id}/activities`,
+          url: `${apiUrl}/activities`,
           headers: {
             'Authorization': `Bearer ${this.props.user.token}`
           }
         })
-        // do something with response
-        this.setState({ activities: response.data.activities, isLoading: false })
+        const match = response.data.activities.filter(activity => activity.trip_id === this.props.parentTrip.id)
+        this.setState({ activities: match, isLoading: false })
       } catch (error) {
         console.error(error)
       }
@@ -69,6 +56,9 @@ class Activities extends Component {
       const activitiesJsx = this.state.activities.map(activity => (
         <ListGroup.Item key={activity.id} variant="flush">
           <p>{activity.begin_date} {activity.end_date} {activity.activity_title}</p>
+          <Link to={`/activities/${activity.id}/edit`}>
+            <Button size="sm">Edit Activity</Button>
+          </Link>
           <Button onClick={this.deleteActivity.bind(this, activity)} variant="danger" size="sm">Delete Activity</Button>
         </ListGroup.Item>
       ))

@@ -14,6 +14,7 @@ import Trip from '../Trips/Trip'
 import CreateTrip from '../Trips/CreateTrip'
 import UpdateTrip from '../Trips/UpdateTrip'
 import CreateActivity from '../Activities/CreateActivity'
+import UpdateActivity from '../Activities/UpdateActivity'
 
 class App extends Component {
   constructor () {
@@ -74,6 +75,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/trips/:id/addactivity' render={() => (
             <CreateActivity user={user} alert={this.alert}/>
+          )} />
+          <AuthenticatedRoute user={user} path='/activities/:id/edit' render={() => (
+            <UpdateActivity user={user} alert={this.alert}/>
           )} />
         </main>
       </Fragment>
