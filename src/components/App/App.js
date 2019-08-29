@@ -34,6 +34,11 @@ class App extends Component {
     this.setState({ alerts: [...this.state.alerts, { heading, message, variant }] })
   }
 
+  // <div className="row logo">
+  //   <div className="col-sm-10 col-md-8 mx-auto mt-5">
+  //   </div>
+  // </div>
+
   render () {
     const { alerts, user } = this.state
 
