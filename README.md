@@ -10,6 +10,21 @@ Users can add trips and build out an itinerary.
 - [Front end repo](https://github.com/dommarr/trek)
 - [Back end repo](https://github.com/dommarr/trek-back-end)
 
+### Front End Setup
+1. Fork and clone this repository.
+2. Install dependencies with `npm install`.
+3. Use `npm start server` to spin up develpment server.
+
+### Back End Setup
+1. Fork and clone this repository.
+2. Install dependencies with `bundle install`.
+3. Use `bin/rails server` to spin up develpment server.
+
+### Screenshots
+![Trips Page](https://i.imgur.com/AKVDTu4.png "Trips Page")
+
+![Activities Page](https://i.imgur.com/PHCg4fL.png "Activities Page")
+
 ### Development
 1. Planning:
   1. Create user stories.
@@ -50,7 +65,7 @@ As a signed-in user, I want to edit and/or delete activities.
 
 ### Database
 
-The application will have a simple one to many relationship between two tables: users and trips.
+The application will have a two one-to-many relationships: users to trips and trips to activities.
 
 ```md
 Table: Users
@@ -65,10 +80,32 @@ Table: Trips
 Table: Activities
 - begin_date: datetime
 - end_date: datetime
-- activity: string
+- activity_title: string
 - trip_id: index
 - id: index
 ```
+
+### Routes
+
+|Prefix| Verb  | URI Pattern      |          Controller#Action|
+|:------|:-------|:------------------|:---------------------------|
+| trips | GET    |/trips(.:format)   |        trips#index |
+|    trips     |  POST  |   /trips(.:format)      |       trips#create |
+| trip   |  GET   |   /trips/:id(.:format)     |    trips#show |
+|  trip      |  PATCH  |  /trips/:id(.:format)     |    trips#update |
+|   trip     |  PUT   |   /trips/:id(.:format)     |    trips#update |
+|   trip     |  DELETE |  /trips/:id(.:format)     |    trips#destroy |
+| activities |  GET  |    /activities(.:format)    |    activities#index |
+|    activities        |  POST  |   /activities(.:format)    |    activities#create |
+| activity |  GET   |   /activities/:id(.:format)  |  activities#show |
+|     activity     |  PATCH  |  /activities/:id(.:format)  |  activities#update |
+|    activity      |  PUT   |   /activities/:id(.:format)  |  activities#update |
+|     activity     |  DELETE  | /activities/:id(.:format)  |  activities#destroy |
+| sign_up  | POST   |  /sign-up(.:format)       |    users#signup |
+| sign_in  | POST  |   /sign-in(.:format)      |     users#signin |
+| sign_out  | DELETE  | /sign-out(.:format)    |      users#signout |
+| change_password  | PATCH  |  /change-password(.:format) |  users#changepw |
+
 
 ### ERD
 
@@ -81,8 +118,8 @@ Table: Activities
 ![Activities](https://i.imgur.com/4O5KSKp.png "Activities")
 
 ### Unsolved Issues / Future Features
-- Improve styling.
-- Set timebound streaks, so it resets to zero if the habit has not been completed in a day.
-- Add icons.
-- Track longest streak for every habit.
-- Show percent completion over time.
+- Improve input field for activity date and time.
+- Allow for more detail to be saved within trip (flight info, hotel, etc.).
+- Connect to Google API, so users can search and select locations for activities.
+  - Could then incorporate directions to each activity.
+- Allow users to invite others to collaboratively build itinerary.

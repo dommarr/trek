@@ -4,7 +4,6 @@ import apiUrl from '../../apiConfig'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-// import ListGroup from 'react-bootstrap/ListGroup'
 import Table from 'react-bootstrap/Table'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
@@ -25,7 +24,10 @@ class Activities extends Component {
           }
         })
         const match = response.data.activities.filter(activity => activity.trip_id === this.props.parenttrip.id)
-        this.setState({ activities: match, isLoading: false })
+        const sortedMatch = match.sort(function (a, b) {
+          return new Date(a.begin_date) - new Date(b.begin_date)
+        })
+        this.setState({ activities: sortedMatch, isLoading: false })
       } catch (error) {
         console.error(error)
       }
@@ -54,21 +56,6 @@ class Activities extends Component {
       }
     }
 
-    // <ListGroup.Item key={activity.id} variant="flush">
-    //   <p>{activity.begin_date} {activity.end_date} {activity.activity_title}</p>
-    //   <Link to={`/activities/${activity.id}/edit`}>
-    //     <Button size="sm">Edit</Button>
-    //   </Link>
-    //   <Button onClick={this.deleteActivity.bind(this, activity)} variant="danger" size="sm">Delete</Button>
-    // </ListGroup.Item>
-
-    // <ListGroup>
-    //   {this.state.activities.length
-    //     ? activitiesJsx
-    //     : <ListGroup.Item>No activities found</ListGroup.Item>
-    //   }
-    // </ListGroup>
-
     render () {
       const activitiesJsx = this.state.activities.map(activity => (
         <tr key={activity.id}>
@@ -78,7 +65,7 @@ class Activities extends Component {
           <td>{activity.activity_title}</td>
           <td>
             <Link to={`/activities/${activity.id}/edit`}>
-              <Button size="sm">Edit</Button>
+              <Button size="sm" variant="light">Edit</Button>
             </Link>
           </td>
           <td>
