@@ -32,7 +32,7 @@ class ChangePassword extends Component {
         message: messages.changePasswordSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/trips'))
       .catch(error => {
         console.error(error)
         this.setState({ oldPassword: '', newPassword: '' })
@@ -77,9 +77,11 @@ class ChangePassword extends Component {
             <Button
               variant="primary"
               type="submit"
+              className="mr-2"
             >
               Submit
             </Button>
+            <Button variant="secondary" href={'#trips/'} user={this.props.user}>Back to trips</Button>
           </Form>
         </div>
       </div>

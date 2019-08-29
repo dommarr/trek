@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-// import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -57,16 +56,6 @@ class Trips extends Component {
       console.error(error)
     }
   }
-
-  // <ListGroup.Item key={trip.id}>
-  //   <Link to={`/trips/${trip.id}`}>{trip.city ? `${trip.city},` : ''} {trip.country}</Link>
-  //   <Link to={`/trips/${trip.id}/edit`}>
-  //     <Button size="sm" className="mr-2">Edit</Button>
-  //   </Link>
-  //   <Button onClick={this.deleteTrip.bind(this, trip)} variant="danger" size="sm">Delete</Button>
-  // </ListGroup.Item>
-
-  // <Link to={`/trips/${trip.id}`}>{trip.city ? `${trip.city},` : ''} {trip.country}</Link>
 
   render () {
     const tripsJsx = this.state.trips.map(trip => (
@@ -135,8 +124,8 @@ class Trips extends Component {
             <Carousel.Caption>
               <div className="caption pt-2 pb-1">
                 <h1 className="text-white">Trek</h1>
-                <p className="text-white mb-0">Travel is fatal to prejudice, bigotry, and narrow-mindedness.</p>
-                <p className="text-white">- Mark Twain</p>
+                <p className="text-white mb-0">A good traveler has no fixed plans, and is not intent on arriving.</p>
+                <p className="text-white">- Lao Tzu</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
@@ -148,7 +137,7 @@ class Trips extends Component {
             : <ListGroup.Item>No trips found</ListGroup.Item>
           }
         </ListGroup>
-        <Button className="mt-3" href={'#createtrip/'}>Create trip</Button>
+        <Button className="mt-3 mb-5" href={'#createtrip/'}>Create trip</Button>
       </Fragment>
     )
   }

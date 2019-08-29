@@ -56,12 +56,17 @@ class CreateActivity extends Component {
   render () {
     return (
       <Fragment>
-        <ActivityForm
-          activity={this.state.activity}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-        <Button href={`#trips/${this.props.match.params.id}`} size="sm">Back to trip</Button>
+        <div className="row">
+          <div className="col-sm-10 col-md-8 mx-auto mt-5">
+            <h3 className="text-light">Activity</h3>
+            <ActivityForm
+              activity={this.state.activity}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            <Button variant="secondary" href={`#trips/${this.props.match.params.id}`} size="sm">Back to trip</Button>
+          </div>
+        </div>
       </Fragment>
     )
   }
