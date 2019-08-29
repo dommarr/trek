@@ -1,6 +1,12 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import Datetime from 'react-datetime'
+
+// <Form.Group controlId="activity_title">
+//   <Form.Label className="text-light">Activity</Form.Label>
+//   <Datetime value={activity.end_date} onChange={handleChange} name="end_date"/>
+// </Form.Group>
 
 const ActivityForm = ({ activity, handleChange, handleSubmit }) => (
   <div className="row">
@@ -25,6 +31,7 @@ const ActivityForm = ({ activity, handleChange, handleSubmit }) => (
             value={activity.end_date}
             onChange={handleChange}
             name="end_date"
+            required
           />
         </Form.Group>
 
@@ -36,8 +43,10 @@ const ActivityForm = ({ activity, handleChange, handleSubmit }) => (
             value={activity.activity_title}
             onChange={handleChange}
             name="activity_title"
+            required
           />
         </Form.Group>
+
         <Button variant="primary" type="submit" size="sm">
           Submit
         </Button>

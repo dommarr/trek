@@ -7,6 +7,17 @@ const TripForm = ({ trip, handleChange, handleSubmit }) => (
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
       <h3 className="text-light">Create a Trip</h3>
       <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="city">
+          <Form.Label className="text-light">Destination City</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter a destination city"
+            value={trip.city}
+            onChange={handleChange}
+            name="city"
+          />
+        </Form.Group>
+
         <Form.Group controlId="country">
           <Form.Label className="text-light">Destination Country</Form.Label>
           <Form.Control
@@ -19,16 +30,6 @@ const TripForm = ({ trip, handleChange, handleSubmit }) => (
           />
         </Form.Group>
 
-        <Form.Group controlId="city">
-          <Form.Label className="text-light">Destination City</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter a destination city"
-            value={trip.city}
-            onChange={handleChange}
-            name="city"
-          />
-        </Form.Group>
         <Button className="mt-3 mr-2" variant="primary" type="submit" size="sm">
           Submit
         </Button>
