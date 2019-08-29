@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 const TripForm = ({ trip, handleChange, handleSubmit }) => (
   <div className="row">
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
-      <h3 className="text-light">Create a Trip</h3>
+      <h3 className="text-light">Trip</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="city">
           <Form.Label className="text-light">Destination City</Form.Label>
@@ -33,7 +33,7 @@ const TripForm = ({ trip, handleChange, handleSubmit }) => (
         <Button className="mt-3 mr-2" variant="primary" type="submit" size="sm">
           Submit
         </Button>
-        <Button className="mt-3" href={'#trips/'} size="sm">Back to all trips</Button>
+        <Button variant="secondary" className="mt-3" href={'#trips/'} size="sm">Back to trips</Button>
       </Form>
     </div>
   </div>
