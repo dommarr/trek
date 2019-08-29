@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 // import ListGroup from 'react-bootstrap/ListGroup'
 import Table from 'react-bootstrap/Table'
@@ -23,7 +24,7 @@ class Activities extends Component {
             'Authorization': `Bearer ${this.props.user.token}`
           }
         })
-        const match = response.data.activities.filter(activity => activity.trip_id === this.props.parentTrip.id)
+        const match = response.data.activities.filter(activity => activity.trip_id === this.props.parenttrip.id)
         this.setState({ activities: match, isLoading: false })
       } catch (error) {
         console.error(error)
@@ -46,7 +47,7 @@ class Activities extends Component {
             'Authorization': `Bearer ${this.props.user.token}`
           }
         })
-        const match = response.data.activities.filter(activity => activity.trip_id === this.props.parentTrip.id)
+        const match = response.data.activities.filter(activity => activity.trip_id === this.props.parenttrip.id)
         this.setState({ activities: match, isLoading: false })
       } catch (error) {
         console.error(error)
@@ -71,8 +72,9 @@ class Activities extends Component {
     render () {
       const activitiesJsx = this.state.activities.map(activity => (
         <tr key={activity.id}>
-          <td>{activity.begin_date}</td>
-          <td>{activity.end_date}</td>
+          <td>{moment(activity.begin_date).fromNow()}</td>
+          <td>{moment(activity.begin_date).calendar()}</td>
+          <td>{moment(activity.end_date).calendar()}</td>
           <td>{activity.activity_title}</td>
           <td>
             <Link to={`/activities/${activity.id}/edit`}>
@@ -97,8 +99,9 @@ class Activities extends Component {
         <Table striped bordered hover responsive variant="dark" className="mt-3">
           <thead>
             <tr>
-              <th>Begin</th>
-              <th>End</th>
+              <th>Starting</th>
+              <th>Begin Date</th>
+              <th>End Date</th>
               <th>Activity</th>
               <th>Edit</th>
               <th>Delete</th>

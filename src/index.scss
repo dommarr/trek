@@ -5,6 +5,8 @@ $secondary: #6c757d;
 $dark: #343a40;
 $light: #f8f9fa;
 $success: #28a745;
+$white: #fff;
+$dark-opac: #343a4080;
 
 body {
   background-color: $dark;
@@ -12,4 +14,13 @@ body {
 
 hr {
   background-color: $light;
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+}
+
+.caption {
+  background-color: $dark-opac;
 }

@@ -44,8 +44,8 @@ class Trip extends Component {
               ? <Button href={`#trips/${trip.id}/edit`}>Edit trip</Button>
               : ''
             }
-            <Activities user={this.props.user} parentTrip={parent}/>
-            <Button className="mt-3 mr-2" href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user} parentTrip={parent}>Add activity</Button>
+            <Activities user={this.props.user} parenttrip={parent}/>
+            <Button className="mt-3 mr-2" href={`#trips/${trip.id}/addactivity`} size="sm" user={this.props.user} parenttrip={parent}>Add activity</Button>
             <Button className="mt-3" href={'#trips/'} size="sm" user={this.props.user}>Back to all trips</Button>
           </Fragment>
         )}

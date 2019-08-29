@@ -2,12 +2,13 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
+// <Nav.Link href="#trips">Trips</Nav.Link>
+// <Nav.Link href="#createtrip">Create a Trip</Nav.Link>
+
 const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#trips">Trips</Nav.Link>
-    <Nav.Link href="#createtrip">Create a Trip</Nav.Link>
   </Fragment>
 )
 
@@ -25,7 +26,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <Navbar bg="light" variant="light" expand="md">
-    <Navbar.Brand href="#">
+    <Navbar.Brand href="#trips">
       Trek
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
