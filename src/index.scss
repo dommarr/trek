@@ -7,6 +7,10 @@ $light: #f8f9fa;
 $success: #28a745;
 $white: #fff;
 $dark-opac: #343a4080;
+$linear-gradient: linear-gradient(
+  rgba(0, 0, 0, 0.9),
+  rgba(0, 0, 0, 0.9)
+);
 
 body {
   background-color: $dark;
@@ -22,5 +26,18 @@ hr {
 }
 
 .caption {
-  background-color: $dark-opac;
+  text-shadow: #343a40 1px 0 10px;
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 400%;
+  text-shadow: 8px 8px 8px #000000;
+}
+
+.quote {
+  background: radial-gradient(
+      #343a4080,
+      #343a4000
+    );
 }
