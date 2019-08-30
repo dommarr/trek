@@ -25,7 +25,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="light" variant="light" expand="md">
     <Navbar.Brand href="#trips">
-      Trek
+      🌎 Trek
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
