@@ -84,48 +84,57 @@ class Trips extends Component {
 
     return (
       <Fragment>
-        <Carousel className="mt-2 mb-2">
+        <Carousel className="mt-2 mb-2 carousel-fade">
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://i.imgur.com/NgSyvyF.jpg"
+              src="https://i.imgur.com/LSPzb6z.jpg"
               alt="Lush hills and fjords"
             />
             <Carousel.Caption>
               <div className="caption pt-2 pb-1">
-                <h1 className="text-white">Trek</h1>
-                <p className="text-white mb-0">Live life with no excuses, travel with no regret</p>
-                <p className="text-white">- Oscar Wilde</p>
+                <h1 className="logo">🌎</h1>
+                <div className="quote">
+                  <h1 className="text-white">Trek</h1>
+                  <p className="text-white mb-0">Live life with no excuses, travel with no regret.</p>
+                  <p className="text-white">- Oscar Wilde</p>
+                </div>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://i.imgur.com/rnVyEFw.jpg"
+              src="https://i.imgur.com/CowuTKx.jpg"
               alt="Tropical beach"
             />
 
             <Carousel.Caption>
               <div className="caption pt-2 pb-1">
-                <h1 className="text-white">Trek</h1>
-                <p className="text-white mb-0">It is not down in any map; true places never are.</p>
-                <p className="text-white">- Herman Melville</p>
+                <h1 className="logo">🌎</h1>
+                <div className="quote">
+                  <h1 className="text-white">Trek</h1>
+                  <p className="text-white mb-0">It is not down in any map; true places never are.</p>
+                  <p className="text-white">- Herman Melville</p>
+                </div>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://i.imgur.com/3T5kzGo.png"
+              src="https://i.imgur.com/lPYa2nZ.jpg"
               alt="Desert mountain road"
             />
 
             <Carousel.Caption>
               <div className="caption pt-2 pb-1">
-                <h1 className="text-white">Trek</h1>
-                <p className="text-white mb-0">A good traveler has no fixed plans, and is not intent on arriving.</p>
-                <p className="text-white">- Lao Tzu</p>
+                <h1 className="logo">🌎</h1>
+                <div className="quote">
+                  <h1 className="text-white">Trek</h1>
+                  <p className="text-white mb-0">A good traveler has no fixed plans, and is not intent on arriving.</p>
+                  <p className="text-white">- Lao Tzu</p>
+                </div>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
